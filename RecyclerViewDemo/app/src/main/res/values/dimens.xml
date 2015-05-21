@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="textSizeTC1">16sp</dimen>
+    <dimen name="textSizeTC2">14sp</dimen>
+
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="list_item_height">96dp</dimen>
+    <dimen name="list_item_image_size">56dp</dimen>
+    <dimen name="list_item_text_container_height">58dp</dimen>
+    <dimen name="list_item_image_margin_right">8dp</dimen>
+    <dimen name="global_edge_size">24dp</dimen>
+    <dimen name="default_card_elevation">8dp</dimen>
+    <dimen name="default_card_radius">0dp</dimen>
+
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="dark_grey">#32393D</color>
+    <color name="image_placeholder">@color/dark_grey</color>
+    <color name="dark_text">@color/dark_grey</color>
+    <color name="light_text">#94999C</color>
+
+</resources>
