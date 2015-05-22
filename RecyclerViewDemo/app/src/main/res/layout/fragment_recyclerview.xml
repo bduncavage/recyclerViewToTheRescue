@@ -5,6 +5,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
+        android:paddingTop="@dimen/toolbar_height"
+        android:paddingLeft="@dimen/recycler_view_edge_size"
+        android:paddingRight="@dimen/recycler_view_edge_size"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -10,6 +10,8 @@
     <dimen name="list_item_text_container_height">58dp</dimen>
     <dimen name="list_item_image_margin_right">8dp</dimen>
     <dimen name="global_edge_size">24dp</dimen>
+    <!-- This value is to be used on recyclerview and must be global_edge_size - default_card_elevation -->
+    <dimen name="recycler_view_edge_size">16dp</dimen>
     <dimen name="default_card_elevation">8dp</dimen>
     <dimen name="default_card_radius">0dp</dimen>
 

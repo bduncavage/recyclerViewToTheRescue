@@ -5,5 +5,7 @@
     <color name="image_placeholder">@color/dark_grey</color>
     <color name="dark_text">@color/dark_grey</color>
     <color name="light_text">#94999C</color>
+    <color name="toolbar_background">#F2F4F5</color>
+    <color name="global_backround">@android:color/white</color>
 
 </resources>

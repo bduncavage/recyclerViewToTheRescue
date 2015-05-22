@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
 import org.duncavage.recyclerviewdemo.R;
@@ -23,5 +24,29 @@ public class ListItemViewHolder extends RecyclerView.ViewHolder {
         secondary = (TextView)itemView.findViewById(R.id.secondary);
         tertiary = (TextView)itemView.findViewById(R.id.tertiary);
         imageView = (NetworkImageView)itemView.findViewById(R.id.image);
+    }
+
+    public void setPrimary(String text) {
+        if (primary != null) {
+            primary.setText(text);
+        }
+    }
+
+    public void setSecondary(String text) {
+        if (secondary != null) {
+            secondary.setText(text);
+        }
+    }
+
+    public void setTertiary(String text) {
+        if (tertiary != null) {
+            tertiary.setText(text);
+        }
+    }
+
+    public void setImageUrl(String url, ImageLoader imageLoader) {
+        if (imageView != null) {
+            imageView.setImageUrl(url, imageLoader);
+        }
     }
 }
