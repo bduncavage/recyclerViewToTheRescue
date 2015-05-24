@@ -14,5 +14,6 @@
     <dimen name="recycler_view_edge_size">16dp</dimen>
     <dimen name="default_card_elevation">8dp</dimen>
     <dimen name="default_card_radius">0dp</dimen>
+    <dimen name="group_heading_vertical_padding">5dp</dimen>
 
 </resources>

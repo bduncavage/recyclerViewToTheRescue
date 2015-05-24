@@ -1,5 +1,6 @@
 package org.duncavage.recyclerviewdemo.presenters;
 
+import org.duncavage.recyclerviewdemo.R;
 import org.duncavage.recyclerviewdemo.presenters.views.ListView;
 import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
 
@@ -22,10 +23,15 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel> {
         // Create some dummy data
         for (int i = 0; i < DUMMY_MODEL_COUNT; i++) {
             ListItemViewModel vm = new ListItemViewModel();
-            vm.primary = "Primary " + i;
-            vm.secondary = "Secondary " + i;
-            vm.tertiary = "Tertiary " + i;
-            vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a"+ (i + 1) + "-0";
+            if (i % 10 == 0) {
+                vm.primary = "Heading " + i;
+                vm.layout = R.layout.list_group_heading;
+            } else {
+                vm.primary = "Primary " + i;
+                vm.secondary = "Secondary " + i;
+                vm.tertiary = "Tertiary " + i;
+                vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + (i + 1) + "-0";
+            }
             viewModels.add(vm);
         }
         setViewModels(viewModels);

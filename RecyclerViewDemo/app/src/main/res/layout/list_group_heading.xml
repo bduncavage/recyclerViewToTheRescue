@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.duncavage.recyclerviewdemo.views.FullDisplayWidthView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey">
+
+    <TextView
+        tools:text="Group Heading 1"
+        style="@style/TypeTC2.ListRowSecondary"
+        android:id="@+id/primary"
+        android:background="@color/lighter_grey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/group_heading_vertical_padding"
+        android:paddingBottom="@dimen/group_heading_vertical_padding"
+        android:paddingLeft="@dimen/global_edge_size"
+        android:gravity="left|center_vertical" />
+
+</org.duncavage.recyclerviewdemo.views.FullDisplayWidthView>
