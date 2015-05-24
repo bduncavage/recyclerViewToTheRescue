@@ -22,10 +22,10 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel> {
         // Create some dummy data
         for (int i = 0; i < DUMMY_MODEL_COUNT; i++) {
             ListItemViewModel vm = new ListItemViewModel();
-            vm.primary = "Primary" + i;
-            vm.secondary = "Secondary" + i;
-            vm.tertiary = "Tertiary" + i;
-            vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a1-0";
+            vm.primary = "Primary " + i;
+            vm.secondary = "Secondary " + i;
+            vm.tertiary = "Tertiary " + i;
+            vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a"+ (i + 1) + "-0";
             viewModels.add(vm);
         }
         setViewModels(viewModels);

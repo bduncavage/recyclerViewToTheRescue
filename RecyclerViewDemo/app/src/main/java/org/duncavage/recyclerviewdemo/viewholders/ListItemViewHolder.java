@@ -46,6 +46,8 @@ public class ListItemViewHolder extends RecyclerView.ViewHolder {
 
     public void setImageUrl(String url, ImageLoader imageLoader) {
         if (imageView != null) {
+            // Remove the old image
+            imageView.setImageBitmap(null);
             imageView.setImageUrl(url, imageLoader);
         }
     }

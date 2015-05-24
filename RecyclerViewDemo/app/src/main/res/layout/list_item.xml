@@ -18,7 +18,7 @@
         android:elevation="@dimen/default_card_elevation">
 
         <com.android.volley.toolbox.NetworkImageView
-            tools:background="@color/image_placeholder"
+            android:background="@color/image_placeholder"
             android:id="@+id/image"
             android:layout_width="@dimen/list_item_image_size"
             android:layout_height="@dimen/list_item_image_size"/>
