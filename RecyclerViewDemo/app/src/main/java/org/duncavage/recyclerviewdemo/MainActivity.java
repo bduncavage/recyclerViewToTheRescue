@@ -1,8 +1,11 @@
 package org.duncavage.recyclerviewdemo;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import org.duncavage.recyclerviewdemo.fragments.ListPagerFragment;
 
 /**
  * Created by brett on 5/21/15.

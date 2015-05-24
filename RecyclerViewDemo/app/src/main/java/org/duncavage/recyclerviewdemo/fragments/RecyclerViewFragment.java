@@ -1,6 +1,5 @@
 package org.duncavage.recyclerviewdemo.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,10 +25,20 @@ import java.util.List;
  * Created by brett on 5/21/15.
  */
 public class RecyclerViewFragment extends Fragment implements ListView<ListItemViewModel> {
+    private static final String LAYOUT_TYPE_ARG_KEY = "layoutType";
+
     public enum LayoutType {
         Linear,
         Grid,
         GridWithSpans,
+    }
+
+    public static RecyclerViewFragment newInstance(LayoutType layoutType) {
+        Bundle args = new Bundle();
+        args.putString(LAYOUT_TYPE_ARG_KEY, layoutType.name());
+        RecyclerViewFragment f = new RecyclerViewFragment();
+        f.setArguments(args);
+        return f;
     }
 
     private RecyclerView recyclerView;
@@ -41,6 +50,10 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null && getArguments().containsKey(LAYOUT_TYPE_ARG_KEY)) {
+            String type = getArguments().getString(LAYOUT_TYPE_ARG_KEY);
+            layoutType = LayoutType.valueOf(type);
+        }
         imageLoader = DemoApplication.getInstance().getImageLoader();
         gridSpanCount = getResources().getInteger(R.integer.grid_span_count);
     }
@@ -48,7 +61,7 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_recyclerview, container);
+        View rootView = inflater.inflate(R.layout.fragment_recyclerview, container, false);
 
         recyclerView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(getLayoutManager(layoutType));
