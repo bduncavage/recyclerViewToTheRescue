@@ -16,6 +16,11 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="TypeTC3">
+        <item name="android:textSize">@dimen/textSizeTC3</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
     <style name="TypeTC1.ListRowPrimary">
         <item name="android:textColor">@color/dark_text</item>
         <item name="android:includeFontPadding">false</item>

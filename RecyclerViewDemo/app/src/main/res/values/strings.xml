@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">RecyclerViewDemo</string>
+    <string name="page_title_linear">LINEAR</string>
+    <string name="page_title_grid">GRID</string>
+    <string name="page_title_grid_with_spans">GRID WITH SPANS</string>
 </resources>

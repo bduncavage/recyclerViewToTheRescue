@@ -7,7 +7,8 @@
     <color name="light_grey">#94999C</color>
     <color name="lighter_grey">#f2f4f5</color>
     <color name="light_text">@color/light_grey</color>
+    <color name="rdio_blue">#008fd5</color>
     <color name="toolbar_background">#F2F4F5</color>
-    <color name="global_backround">@android:color/white</color>
+    <color name="global_background">@android:color/white</color>
 
 </resources>

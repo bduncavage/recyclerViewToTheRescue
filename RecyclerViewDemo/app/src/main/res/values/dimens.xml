@@ -3,8 +3,10 @@
 
     <dimen name="textSizeTC1">16sp</dimen>
     <dimen name="textSizeTC2">14sp</dimen>
+    <dimen name="textSizeTC3">12sp</dimen>
 
     <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="tab_strip_height">36dp</dimen>
     <dimen name="list_item_height">96dp</dimen>
     <dimen name="list_item_image_size">56dp</dimen>
     <dimen name="list_item_text_container_height">58dp</dimen>
