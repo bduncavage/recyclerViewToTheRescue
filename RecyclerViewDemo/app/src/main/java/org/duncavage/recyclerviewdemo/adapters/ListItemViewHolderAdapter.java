@@ -3,6 +3,7 @@ package org.duncavage.recyclerviewdemo.adapters;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ public class ListItemViewHolderAdapter<T extends ListItemViewModel> extends Recy
 
     private final ImageLoader imageLoader;
     private final Handler handler = new Handler(Looper.getMainLooper());
+    private final SpanSizeLookup spanSizeLookup = new SpanSizeLookup();
 
     public enum AnimationDirection {
         UpFromBottom,
@@ -40,6 +42,10 @@ public class ListItemViewHolderAdapter<T extends ListItemViewModel> extends Recy
     public ListItemViewHolderAdapter(List<T> viewModels, ImageLoader imageLoader) {
         this.viewModels = viewModels;
         this.imageLoader = imageLoader;
+    }
+
+    public GridLayoutManager.SpanSizeLookup getSpanSizeLookup() {
+        return spanSizeLookup;
     }
 
     public void setAnimateItemsOnScroll(boolean animate) {
@@ -127,6 +133,13 @@ public class ListItemViewHolderAdapter<T extends ListItemViewModel> extends Recy
                 }, delay);
                 lastAnimatedPosition = position;
             }
+        }
+    }
+
+    private class SpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
+        @Override
+        public int getSpanSize(int position) {
+            return viewModels.get(position).spanCount;
         }
     }
 }

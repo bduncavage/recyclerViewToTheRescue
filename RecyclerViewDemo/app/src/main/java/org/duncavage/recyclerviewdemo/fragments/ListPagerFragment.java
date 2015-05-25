@@ -68,8 +68,10 @@ public class ListPagerFragment extends Fragment {
                     return getString(R.string.page_title_linear);
                 case Grid:
                     return getString(R.string.page_title_grid);
-                case GridWithSpans:
-                    return getString(R.string.page_title_grid_with_spans);
+                case GridWithGroupHeadings:
+                    return getString(R.string.page_title_grid_with_headings);
+                case GridWithHeadingsAndSpans:
+                    return getResources().getString(R.string.page_title_grid_with_spans);
                 default:
                     return null;
             }

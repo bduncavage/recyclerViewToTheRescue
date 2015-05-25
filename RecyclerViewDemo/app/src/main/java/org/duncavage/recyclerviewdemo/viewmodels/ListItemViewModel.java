@@ -8,4 +8,5 @@ public class ListItemViewModel extends BaseViewModel {
     public String secondary;
     public String tertiary;
     public String imageUrl;
+    public int spanCount = 1;
 }

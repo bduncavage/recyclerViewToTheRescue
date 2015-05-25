@@ -9,6 +9,7 @@
     <dimen name="tab_strip_height">36dp</dimen>
     <dimen name="list_item_height">96dp</dimen>
     <dimen name="list_item_image_size">56dp</dimen>
+    <dimen name="list_item_image_size_large">112dp</dimen>
     <dimen name="list_item_text_container_height">58dp</dimen>
     <dimen name="list_item_image_margin_right">8dp</dimen>
     <dimen name="global_edge_size">24dp</dimen>
