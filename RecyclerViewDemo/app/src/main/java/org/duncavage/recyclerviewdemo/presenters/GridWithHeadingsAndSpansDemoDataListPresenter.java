@@ -15,9 +15,11 @@ public class GridWithHeadingsAndSpansDemoDataListPresenter extends GridWithHeadi
     @Override
     protected void onItemAdded(ListItemViewModel viewModel, int position) {
         super.onItemAdded(viewModel, position);
-        if (position > 0 && position % 5 == 0) {
+        if (position > 0 && position % 5 == 0 || position % 6 == 0) {
             viewModel.spanCount = getSpanCount() - 1;
             viewModel.layout = R.layout.grid_item_large;
         }
+        // TODO: Add a full-bleed item that is a horizontal list as the last item of the group
+        // Check if next position is a header or not
     }
 }

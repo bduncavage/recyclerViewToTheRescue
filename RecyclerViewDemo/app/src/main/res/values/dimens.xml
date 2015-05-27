@@ -18,5 +18,7 @@
     <dimen name="default_card_elevation">8dp</dimen>
     <dimen name="default_card_radius">0dp</dimen>
     <dimen name="group_heading_vertical_padding">5dp</dimen>
+    <dimen name="grid_item_image_size">80dp</dimen>
+    <dimen name="grid_item_height">160dp</dimen>
 
 </resources>

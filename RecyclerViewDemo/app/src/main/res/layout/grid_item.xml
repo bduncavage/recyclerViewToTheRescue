@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="@dimen/grid_item_height"
+    android:paddingBottom="8dp">
 
     <android.support.v7.widget.CardView
         xmlns:cardView="http://schemas.android.com/apk/res-auto"
@@ -18,8 +19,8 @@
         <com.android.volley.toolbox.NetworkImageView
             android:background="@color/image_placeholder"
             android:id="@+id/image"
-            android:layout_width="@dimen/list_item_image_size"
-            android:layout_height="@dimen/list_item_image_size"/>
+            android:layout_width="@dimen/grid_item_image_size"
+            android:layout_height="@dimen/grid_item_image_size"/>
 
     </android.support.v7.widget.CardView>
 
