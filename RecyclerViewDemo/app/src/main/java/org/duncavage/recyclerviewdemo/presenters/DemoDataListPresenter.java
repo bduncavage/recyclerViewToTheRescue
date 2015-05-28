@@ -26,7 +26,7 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel> {
      * Override this to perform extra processing of a header view model
      * @param viewModel
      */
-    protected void onHeaderAdded(ListItemViewModel viewModel) {}
+    protected void onHeaderAdded(ListItemViewModel viewModel, int position) {}
 
     /**
      * Override this to perform extra processing of a content item
@@ -43,15 +43,18 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel> {
             if (i % 10 == 0 && isAddingHeaders) {
                 vm.primary = "Heading " + i;
                 vm.layout = R.layout.list_group_heading;
-                onHeaderAdded(vm);
             } else {
                 vm.primary = "Primary " + i;
                 vm.secondary = "Secondary " + i;
                 vm.tertiary = "Tertiary " + i;
                 vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + (i + 1) + "-0";
-                onItemAdded(vm, i);
             }
             viewModels.add(vm);
+            if (vm.layout == R.layout.list_group_heading) {
+                onHeaderAdded(vm, i);
+            } else {
+                onItemAdded(vm, i);
+            }
         }
         setViewModels(viewModels);
     }

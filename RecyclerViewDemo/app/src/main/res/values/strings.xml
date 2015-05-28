@@ -4,4 +4,5 @@
     <string name="page_title_grid">GRID</string>
     <string name="page_title_grid_with_spans">GRID WITH SPANS</string>
     <string name="page_title_grid_with_headings">GRID WITH HEADINGS</string>
+    <string name="page_title_grid_with_carousel">GRID WITH CAROUSEL</string>
 </resources>

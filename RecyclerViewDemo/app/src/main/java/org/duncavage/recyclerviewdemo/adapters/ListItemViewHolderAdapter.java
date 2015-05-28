@@ -48,8 +48,16 @@ public class ListItemViewHolderAdapter<T extends ListItemViewModel> extends Recy
         return spanSizeLookup;
     }
 
+    protected ImageLoader getImageLoader() {
+        return imageLoader;
+    }
+
     public void setAnimateItemsOnScroll(boolean animate) {
         animateItemsOnScroll = animate;
+    }
+
+    protected AnimationDirection getAnimationDirection() {
+        return AnimationDirection.UpFromBottom;
     }
 
     @Override
@@ -68,7 +76,7 @@ public class ListItemViewHolderAdapter<T extends ListItemViewModel> extends Recy
         holder.setSecondary(vm.secondary);
         holder.setTertiary(vm.tertiary);
         holder.setImageUrl(vm.imageUrl, imageLoader);
-        runAnimation(holder, position, defaultItemAnimationDuration, AnimationDirection.UpFromBottom);
+        runAnimation(holder, position, defaultItemAnimationDuration, getAnimationDirection());
     }
 
     @Override

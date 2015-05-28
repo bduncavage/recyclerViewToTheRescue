@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.duncavage.recyclerviewdemo.views.FullDisplayWidthView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/grid_item_height">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            style="@style/TypeTC1.ListRowPrimary"
+            android:id="@+id/primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:paddingLeft="@dimen/recycler_view_edge_size"
+            android:paddingRight="@dimen/recycler_view_edge_size"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/grid_item_height" />
+
+    </LinearLayout>
+
+</org.duncavage.recyclerviewdemo.views.FullDisplayWidthView>

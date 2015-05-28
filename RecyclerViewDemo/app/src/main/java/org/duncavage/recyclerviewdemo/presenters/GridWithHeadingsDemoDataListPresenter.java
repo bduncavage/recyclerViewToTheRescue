@@ -19,7 +19,7 @@ public class GridWithHeadingsDemoDataListPresenter extends DemoDataListPresenter
     }
 
     @Override
-    protected void onHeaderAdded(ListItemViewModel viewModel) {
+    protected void onHeaderAdded(ListItemViewModel viewModel, int position) {
         viewModel.spanCount = spanCount;
     }
 

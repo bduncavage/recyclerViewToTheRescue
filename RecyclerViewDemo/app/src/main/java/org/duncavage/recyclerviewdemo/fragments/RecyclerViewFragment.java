@@ -14,9 +14,11 @@ import com.android.volley.toolbox.ImageLoader;
 
 import org.duncavage.recyclerviewdemo.DemoApplication;
 import org.duncavage.recyclerviewdemo.R;
+import org.duncavage.recyclerviewdemo.adapters.ListItemRecyclerViewHolderAdapter;
 import org.duncavage.recyclerviewdemo.adapters.ListItemViewHolderAdapter;
 import org.duncavage.recyclerviewdemo.presenters.DemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.GridDemoDataListPresenter;
+import org.duncavage.recyclerviewdemo.presenters.GridWithCarouselsDemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.GridWithHeadingsAndSpansDemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.GridWithHeadingsDemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.views.ListView;
@@ -35,6 +37,7 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
         Grid,
         GridWithGroupHeadings,
         GridWithHeadingsAndSpans,
+        GridWithCarousel,
     }
 
     public static RecyclerViewFragment newInstance(LayoutType layoutType) {
@@ -91,6 +94,8 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
                 return new GridWithHeadingsDemoDataListPresenter(this, gridSpanCount);
             case GridWithHeadingsAndSpans:
                 return new GridWithHeadingsAndSpansDemoDataListPresenter(this, gridSpanCount);
+            case GridWithCarousel:
+                return new GridWithCarouselsDemoDataListPresenter(this, gridSpanCount);
         }
         return null;
     }
@@ -105,6 +110,7 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
             case Grid:
             case GridWithGroupHeadings:
             case GridWithHeadingsAndSpans:
+            case GridWithCarousel:
                 return new GridLayoutManager(getActivity(), gridSpanCount);
             default:
                 return new LinearLayoutManager(getActivity());
@@ -115,10 +121,15 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
 
     @Override
     public void setList(List<ListItemViewModel> list) {
-        ListItemViewHolderAdapter adapter = new ListItemViewHolderAdapter<>(list, imageLoader);
+        ListItemViewHolderAdapter adapter;
+        if (layoutType == LayoutType.GridWithCarousel) {
+            adapter = new ListItemRecyclerViewHolderAdapter(list, imageLoader);
+        } else {
+            adapter = new ListItemViewHolderAdapter<>(list, imageLoader);
+        }
         recyclerView.swapAdapter(adapter, false);
         if (recyclerView.getLayoutManager() instanceof GridLayoutManager) {
-            GridLayoutManager glm = (GridLayoutManager)recyclerView.getLayoutManager();
+            GridLayoutManager glm = (GridLayoutManager) recyclerView.getLayoutManager();
             glm.setSpanSizeLookup(adapter.getSpanSizeLookup());
         }
     }
