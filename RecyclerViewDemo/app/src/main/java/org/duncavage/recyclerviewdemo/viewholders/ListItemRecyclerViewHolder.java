@@ -28,12 +28,12 @@ public class ListItemRecyclerViewHolder extends ListItemViewHolder
     public ListItemRecyclerViewHolder(View itemView, ImageLoader imageLoader) {
         super(itemView);
         recyclerView = (RecyclerView)itemView.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(itemView.getContext(), 1, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         this.imageLoader = imageLoader;
     }
 
     public void load() {
-        presenter = new GridDemoDataListPresenter(this);
+        presenter = new Presenter(this);
         presenter.load();
     }
 
@@ -50,6 +50,18 @@ public class ListItemRecyclerViewHolder extends ListItemViewHolder
         @Override
         protected AnimationDirection getAnimationDirection() {
             return AnimationDirection.InFromLeft;
+        }
+    }
+
+    private static class Presenter extends GridDemoDataListPresenter {
+        public Presenter(ListView<ListItemViewModel> view) {
+            super(view);
+        }
+
+        @Override
+        protected void onItemAdded(ListItemViewModel viewModel, int position) {
+            super.onItemAdded(viewModel, position);
+            viewModel.layout = R.layout.carousel_item;
         }
     }
 }

@@ -6,7 +6,6 @@ import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by brett on 5/22/15.
@@ -47,7 +46,7 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel> {
                 vm.primary = "Primary " + i;
                 vm.secondary = "Secondary " + i;
                 vm.tertiary = "Tertiary " + i;
-                vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + (i + 1) + "-0";
+                vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + (i + 100) + "-0";
             }
             viewModels.add(vm);
             if (vm.layout == R.layout.list_group_heading) {
