@@ -133,12 +133,4 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
             glm.setSpanSizeLookup(adapter.getSpanSizeLookup());
         }
     }
-
-    // Span lookup for grids
-    private static class SpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
-        @Override
-        public int getSpanSize(int position) {
-            return 0;
-        }
-    }
 }
