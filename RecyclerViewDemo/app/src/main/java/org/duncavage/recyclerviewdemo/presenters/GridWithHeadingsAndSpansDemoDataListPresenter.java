@@ -23,9 +23,13 @@ public class GridWithHeadingsAndSpansDemoDataListPresenter extends GridWithHeadi
         if (position > 0) {
             int rand = new Random().nextInt() % 3;
             // 33% chance of adding a span.
+            boolean wonRandom = rand == 2;
             // Don't put spannable items next to each other, it doesn't look good.
-            if ((lastSpannableItemAddedPosition == NO_POSITION
-                    || lastSpannableItemAddedPosition != position - 1) && rand == 2) {
+            boolean notAdjacent = lastSpannableItemAddedPosition == NO_POSITION ||
+                    lastSpannableItemAddedPosition != position - 1;
+            // Don't put in last column
+            boolean notInLastColumn = (position + 1) % getSpanCount() != 0;
+            if (wonRandom && notAdjacent && notInLastColumn) {
                 viewModel.spanCount = getSpanCount() - 1;
                 viewModel.layout = R.layout.grid_item_large;
                 lastSpannableItemAddedPosition = position;
