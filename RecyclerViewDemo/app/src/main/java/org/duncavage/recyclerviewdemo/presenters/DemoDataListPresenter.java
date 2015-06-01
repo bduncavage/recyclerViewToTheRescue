@@ -15,6 +15,32 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
     implements ListView.Events {
     private static final int DUMMY_MODEL_COUNT = 100;
 
+    private static final String[] NEW_ITEM_IMAGE_URLS = {
+            "http://rdiodynimages0-a.akamaihd.net/?l=a5791435-1",
+            "http://rdiodynimages0-a.akamaihd.net/?l=a5776410-1",
+            "http://rdiodynimages1-a.akamaihd.net/?l=a5732739-4",
+            "http://rdiodynimages2-a.akamaihd.net/?l=a5702830-2",
+            "http://rdiodynimages0-a.akamaihd.net/?l=a5722293-1",
+            "http://rdiodynimages2-a.akamaihd.net/?l=a5753865-2",
+            "http://rdiodynimages1-a.akamaihd.net/?l=a5809025-3",
+            "http://rdiodynimages2-a.akamaihd.net/?l=a5772148-1",
+            "http://rdiodynimages1-a.akamaihd.net/?l=a5758415-1",
+            "http://rdiodynimages3-a.akamaihd.net/?l=a5743329-1",
+    };
+
+    private static final String[] ITEM_IMAGE_URLS = {
+            "http://rdiodynimages0-a.akamaihd.net/?l=a5791435-1",
+            "http://rdiodynimages0-a.akamaihd.net/?l=a5776410-1",
+            "http://rdiodynimages1-a.akamaihd.net/?l=a5732739-4",
+            "http://rdiodynimages2-a.akamaihd.net/?l=a5702830-2",
+            "http://rdiodynimages0-a.akamaihd.net/?l=a5722293-1",
+            "http://rdiodynimages2-a.akamaihd.net/?l=a5753865-2",
+            "http://rdiodynimages1-a.akamaihd.net/?l=a5809025-3",
+            "http://rdiodynimages2-a.akamaihd.net/?l=a5772148-1",
+            "http://rdiodynimages1-a.akamaihd.net/?l=a5758415-1",
+            "http://rdiodynimages3-a.akamaihd.net/?l=a5743329-1",
+    };
+
     private final boolean isAddingHeaders;
     private final StringProvider stringProvider;
 
@@ -52,7 +78,8 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
                 vm.primary = stringProvider.getStringForResource(R.string.item_primary_prefix) + " " + i;
                 vm.secondary = stringProvider.getStringForResource(R.string.item_secondary_prefix) + " " + i;
                 vm.tertiary = i + " " + stringProvider.getStringForResource(R.string.item_tertiary_prefix);
-                vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + (i + 100000) + "-0";
+                int randAlbum = new Random().nextInt(ITEM_IMAGE_URLS.length);
+                vm.imageUrl = ITEM_IMAGE_URLS[randAlbum];
             }
             viewModels.add(vm);
             if (vm.layout == R.layout.list_group_heading) {
@@ -68,8 +95,8 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
         ListItemViewModel vm = new ListItemViewModel();
         vm.primary = stringProvider.getStringForResource(R.string.new_item_primary);
         vm.secondary = stringProvider.getStringForResource(R.string.new_item_secondary);
-        int randAlbum = Math.abs(new Random().nextInt() % 20000000) + 10000000;
-        vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + randAlbum + "-1";
+        int randAlbum = new Random().nextInt(NEW_ITEM_IMAGE_URLS.length);
+        vm.imageUrl = NEW_ITEM_IMAGE_URLS[randAlbum];
 
         return vm;
     }
