@@ -20,8 +20,7 @@ import java.util.List;
  * Created by brett on 5/21/15.
  */
 public class ListItemViewHolderAdapter<T extends ListItemViewModel>
-        extends RecyclerView.Adapter<ListItemViewHolder>
-        implements CRUDAdapter {
+        extends RecyclerView.Adapter<ListItemViewHolder> {
     private static final int ANIMATION_DELAY_INTERVAL = 50;
 
     private final List<T> viewModels;
@@ -151,25 +150,5 @@ public class ListItemViewHolderAdapter<T extends ListItemViewModel>
         public int getSpanSize(int position) {
             return viewModels.get(position).spanCount;
         }
-    }
-
-    // CRUDAdapter
-
-    @Override
-    public void removeItem(int position) {
-        viewModels.remove(position);
-        notifyItemRemoved(position);
-    }
-
-    @Override
-    public void addItem(ListItemViewModel item) {
-        viewModels.add(0, (T)item);
-        notifyItemInserted(0);
-    }
-
-    @Override
-    public void updateItem(int position, ListItemViewModel item) {
-        viewModels.set(position, (T)item);
-        notifyItemChanged(position);
     }
 }

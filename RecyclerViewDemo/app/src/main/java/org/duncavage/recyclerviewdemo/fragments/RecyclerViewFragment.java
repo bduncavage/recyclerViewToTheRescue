@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import com.android.volley.toolbox.ImageLoader;
 
 import org.duncavage.recyclerviewdemo.DemoApplication;
-import org.duncavage.recyclerviewdemo.MainActivity;
 import org.duncavage.recyclerviewdemo.R;
-import org.duncavage.recyclerviewdemo.adapters.CRUDAdapter;
 import org.duncavage.recyclerviewdemo.adapters.ListItemRecyclerViewHolderAdapter;
 import org.duncavage.recyclerviewdemo.adapters.ListItemViewHolderAdapter;
 import org.duncavage.recyclerviewdemo.presenters.DemoDataListPresenter;
@@ -28,7 +26,6 @@ import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
 import org.duncavage.recyclerviewdemo.views.RecyclerViewItemClickListener;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by brett on 5/21/15.
@@ -83,9 +80,8 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
             @Override
             public void onItemClick(View view, int position) {
                 view.performClick();
-                if (recyclerView.getAdapter() instanceof CRUDAdapter) {
-                    ((CRUDAdapter)recyclerView.getAdapter()).removeItem(position);
-                }
+                eventsListener.onRemoveItem(position);
+                recyclerView.getAdapter().notifyItemRemoved(position);
             }
 
             @Override

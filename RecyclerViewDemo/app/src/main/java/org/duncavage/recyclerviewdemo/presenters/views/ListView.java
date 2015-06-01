@@ -9,6 +9,7 @@ public interface ListView<T> {
     interface Events {
         void onItemClicked(int position);
         void onAddNewItem();
+        void onRemoveItem(int position);
     }
 
     void setEventsListener(Events listener);

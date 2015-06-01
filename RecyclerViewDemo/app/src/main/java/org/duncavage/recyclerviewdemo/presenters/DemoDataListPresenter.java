@@ -63,7 +63,7 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
 
     protected ListItemViewModel createBlankItem() {
         ListItemViewModel vm = new ListItemViewModel();
-        int randAlbum = Math.abs(new Random().nextInt() % 2000000);
+        int randAlbum = Math.abs(new Random().nextInt() % 20000000) + 10000000;
         vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + randAlbum + "-0";
 
         return vm;
@@ -79,5 +79,10 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
         ListItemViewModel vm = createBlankItem();
         vm.layout = R.layout.list_item;
         getViewModels().add(0, vm);
+    }
+
+    @Override
+    public void onRemoveItem(int position) {
+        getViewModels().remove(position);
     }
 }
