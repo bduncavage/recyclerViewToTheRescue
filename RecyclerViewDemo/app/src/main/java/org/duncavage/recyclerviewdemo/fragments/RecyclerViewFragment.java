@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,6 +15,7 @@ import com.android.volley.toolbox.ImageLoader;
 
 import org.duncavage.recyclerviewdemo.DemoApplication;
 import org.duncavage.recyclerviewdemo.R;
+import org.duncavage.recyclerviewdemo.adapters.CRUDAdapter;
 import org.duncavage.recyclerviewdemo.adapters.ListItemRecyclerViewHolderAdapter;
 import org.duncavage.recyclerviewdemo.adapters.ListItemViewHolderAdapter;
 import org.duncavage.recyclerviewdemo.presenters.DemoDataListPresenter;
@@ -23,6 +25,7 @@ import org.duncavage.recyclerviewdemo.presenters.GridWithHeadingsAndSpansDemoDat
 import org.duncavage.recyclerviewdemo.presenters.GridWithHeadingsDemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.views.ListView;
 import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
+import org.duncavage.recyclerviewdemo.views.RecyclerViewItemClickListener;
 
 import java.util.List;
 
@@ -73,6 +76,21 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
         recyclerView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(createLayoutManager(layoutType));
 
+        recyclerView.addOnItemTouchListener(new RecyclerViewItemClickListener(getActivity(),
+                new RecyclerViewItemClickListener.OnItemGestureListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                view.performClick();
+                if (recyclerView.getAdapter() instanceof CRUDAdapter) {
+                    ((CRUDAdapter)recyclerView.getAdapter()).removeItem(position);
+                }
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        }));
         return rootView;
     }
 
