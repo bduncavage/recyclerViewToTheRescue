@@ -13,6 +13,16 @@
         android:id="@+id/toolbar"
         android:background="@color/toolbar_background"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height" />
+        android:layout_height="@dimen/toolbar_height">
+
+        <ImageButton
+            android:id="@+id/button_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:tint="@android:color/black"
+            android:src="@android:drawable/ic_menu_add"/>
+
+    </android.support.v7.widget.Toolbar>
 
 </FrameLayout>

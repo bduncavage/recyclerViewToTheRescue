@@ -7,7 +7,7 @@ import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
 /**
  * Created by brett on 5/25/15.
  */
-public class GridWithHeadingsDemoDataListPresenter extends DemoDataListPresenter {
+public class GridWithHeadingsDemoDataListPresenter extends GridDemoDataListPresenter {
     private final int spanCount;
     public GridWithHeadingsDemoDataListPresenter(ListView<ListItemViewModel> view, int spanCount) {
         super(view, true);

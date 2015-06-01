@@ -24,6 +24,7 @@ public class ListItemRecyclerViewHolder extends ListItemViewHolder
     private final RecyclerView recyclerView;
     private final ImageLoader imageLoader;
     private DemoDataListPresenter presenter;
+    private ListView.Events eventsListener;
 
     public ListItemRecyclerViewHolder(View itemView, ImageLoader imageLoader) {
         super(itemView);
@@ -41,6 +42,11 @@ public class ListItemRecyclerViewHolder extends ListItemViewHolder
     public void setList(List<ListItemViewModel> list) {
         ListItemViewHolderAdapter adapter = new Adapter(list, imageLoader);
         recyclerView.swapAdapter(adapter, false);
+    }
+
+    @Override
+    public void setEventsListener(Events listener) {
+        eventsListener = listener;
     }
 
     private static class Adapter extends ListItemViewHolderAdapter {

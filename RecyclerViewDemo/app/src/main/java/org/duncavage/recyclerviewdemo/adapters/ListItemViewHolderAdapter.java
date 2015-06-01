@@ -24,7 +24,7 @@ public class ListItemViewHolderAdapter<T extends ListItemViewModel>
         implements CRUDAdapter {
     private static final int ANIMATION_DELAY_INTERVAL = 50;
 
-    private List<T> viewModels;
+    private final List<T> viewModels;
     private int lastAnimatedPosition = -1;
     private long nextAnimationStartTime;
     private boolean animateItemsOnScroll = true;
@@ -163,7 +163,7 @@ public class ListItemViewHolderAdapter<T extends ListItemViewModel>
 
     @Override
     public void addItem(ListItemViewModel item) {
-        viewModels.add((T)item);
+        viewModels.add(0, (T)item);
         notifyItemInserted(0);
     }
 

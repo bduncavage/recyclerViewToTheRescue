@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.duncavage.recyclerviewdemo.MainActivity;
 import org.duncavage.recyclerviewdemo.R;
 
 /**
@@ -27,6 +28,8 @@ public class ListPagerFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_viewpager, container, false);
 
         viewPager = (ViewPager)rootView.findViewById(R.id.view_pager);
+        viewPager.setAdapter(new ListPagerAdapter(getChildFragmentManager()));
+
         tabStrip = (PagerTabStrip)rootView.findViewById(R.id.tab_strip);
         tabStrip.setBackgroundColor(getResources().getColor(R.color.toolbar_background));
         tabStrip.setTextColor(getResources().getColor(R.color.dark_text));
@@ -37,12 +40,20 @@ public class ListPagerFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        viewPager.setAdapter(new ListPagerAdapter(getChildFragmentManager()));
+    public void onResume() {
+        super.onResume();
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).setToolbarRightButtonClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((ListPagerAdapter)viewPager.getAdapter()).currentFragment.addNewItem();
+                }
+            });
+        }
     }
 
     private class ListPagerAdapter extends FragmentPagerAdapter {
+        public RecyclerViewFragment currentFragment;
         public ListPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -55,6 +66,12 @@ public class ListPagerFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
             return RecyclerViewFragment.newInstance(RecyclerViewFragment.LayoutType.values()[position]);
+        }
+
+        @Override
+        public void setPrimaryItem(ViewGroup container, int position, Object object) {
+            super.setPrimaryItem(container, position, object);
+            currentFragment = (RecyclerViewFragment)object;
         }
 
         @Override

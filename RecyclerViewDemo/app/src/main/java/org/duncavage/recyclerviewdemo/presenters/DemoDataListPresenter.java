@@ -6,11 +6,13 @@ import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by brett on 5/22/15.
  */
-public class DemoDataListPresenter extends ListPresenter<ListItemViewModel> {
+public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
+    implements ListView.Events {
     private static final int DUMMY_MODEL_COUNT = 100;
 
     private final boolean isAddingHeaders;
@@ -19,6 +21,7 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel> {
                                  boolean addHeaders) {
         super(view);
         isAddingHeaders = addHeaders;
+        view.setEventsListener(this);
     }
 
     /**
@@ -56,5 +59,25 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel> {
             }
         }
         setViewModels(viewModels);
+    }
+
+    protected ListItemViewModel createBlankItem() {
+        ListItemViewModel vm = new ListItemViewModel();
+        int randAlbum = Math.abs(new Random().nextInt() % 2000000);
+        vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + randAlbum + "-0";
+
+        return vm;
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+
+    }
+
+    @Override
+    public void onAddNewItem() {
+        ListItemViewModel vm = createBlankItem();
+        vm.layout = R.layout.list_item;
+        getViewModels().add(0, vm);
     }
 }

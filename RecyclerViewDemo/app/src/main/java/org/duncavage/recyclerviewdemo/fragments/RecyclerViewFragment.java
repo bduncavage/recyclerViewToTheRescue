@@ -7,13 +7,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.volley.toolbox.ImageLoader;
 
 import org.duncavage.recyclerviewdemo.DemoApplication;
+import org.duncavage.recyclerviewdemo.MainActivity;
 import org.duncavage.recyclerviewdemo.R;
 import org.duncavage.recyclerviewdemo.adapters.CRUDAdapter;
 import org.duncavage.recyclerviewdemo.adapters.ListItemRecyclerViewHolderAdapter;
@@ -28,12 +28,14 @@ import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
 import org.duncavage.recyclerviewdemo.views.RecyclerViewItemClickListener;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by brett on 5/21/15.
  */
 public class RecyclerViewFragment extends Fragment implements ListView<ListItemViewModel> {
     private static final String LAYOUT_TYPE_ARG_KEY = "layoutType";
+    private ListView.Events eventsListener;
 
     public enum LayoutType {
         Linear,
@@ -91,6 +93,7 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
 
             }
         }));
+
         return rootView;
     }
 
@@ -100,6 +103,12 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
         // Now that the view has been created, create any presenters needed to get data.
         listPresenter = createListPresenter();
         listPresenter.load();
+    }
+
+    public void addNewItem() {
+        eventsListener.onAddNewItem();
+        recyclerView.getAdapter().notifyItemInserted(0);
+        recyclerView.scrollToPosition(0);
     }
 
     private DemoDataListPresenter createListPresenter() {
@@ -150,5 +159,10 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
             GridLayoutManager glm = (GridLayoutManager) recyclerView.getLayoutManager();
             glm.setSpanSizeLookup(adapter.getSpanSizeLookup());
         }
+    }
+
+    @Override
+    public void setEventsListener(Events listener) {
+        eventsListener = listener;
     }
 }
