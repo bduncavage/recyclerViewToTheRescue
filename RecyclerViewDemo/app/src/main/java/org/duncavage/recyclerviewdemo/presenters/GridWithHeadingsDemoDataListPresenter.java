@@ -9,8 +9,10 @@ import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
  */
 public class GridWithHeadingsDemoDataListPresenter extends GridDemoDataListPresenter {
     private final int spanCount;
-    public GridWithHeadingsDemoDataListPresenter(ListView<ListItemViewModel> view, int spanCount) {
-        super(view, true);
+    public GridWithHeadingsDemoDataListPresenter(ListView<ListItemViewModel> view,
+                                                 int spanCount,
+                                                 StringProvider stringProvider) {
+        super(view, true, stringProvider);
         this.spanCount = spanCount;
     }
 

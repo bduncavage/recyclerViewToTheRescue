@@ -13,8 +13,10 @@ public class GridWithHeadingsAndSpansDemoDataListPresenter extends GridWithHeadi
     private static final int NO_POSITION = -1;
     private int lastSpannableItemAddedPosition = NO_POSITION;
 
-    public GridWithHeadingsAndSpansDemoDataListPresenter(ListView<ListItemViewModel> view, int spanCount) {
-        super(view, spanCount);
+    public GridWithHeadingsAndSpansDemoDataListPresenter(ListView<ListItemViewModel> view,
+                                                         int spanCount,
+                                                         StringProvider stringProvider) {
+        super(view, spanCount, stringProvider);
     }
 
     @Override

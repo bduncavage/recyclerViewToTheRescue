@@ -6,4 +6,8 @@
     <string name="page_title_grid_with_headings">GRID WITH HEADINGS</string>
     <string name="page_title_grid_with_carousel">GRID WITH CAROUSEL</string>
     <string name="new_item_primary">New Item!</string>
+    <string name="new_item_secondary">Hello, I am a new item.</string>
+    <string name="item_primary_prefix">Primary</string>
+    <string name="item_secondary_prefix">Secondary</string>
+    <string name="item_tertiary_prefix">songs</string>
 </resources>

@@ -12,8 +12,10 @@ public class GridWithCarouselsDemoDataListPresenter extends GridWithHeadingsAndS
 
     private int lastHeaderPosition = NO_POSITION;
 
-    public GridWithCarouselsDemoDataListPresenter(ListView<ListItemViewModel> view, int spanCount) {
-        super(view, spanCount);
+    public GridWithCarouselsDemoDataListPresenter(ListView<ListItemViewModel> view,
+                                                  int spanCount,
+                                                  StringProvider stringProvider) {
+        super(view, spanCount, stringProvider);
     }
 
     @Override

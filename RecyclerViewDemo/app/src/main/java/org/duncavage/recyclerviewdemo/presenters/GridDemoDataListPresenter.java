@@ -8,12 +8,14 @@ import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
  * Created by brett on 5/25/15.
  */
 public class GridDemoDataListPresenter extends DemoDataListPresenter {
-    public GridDemoDataListPresenter(ListView<ListItemViewModel> view) {
-        super(view, false);
+    public GridDemoDataListPresenter(ListView<ListItemViewModel> view, StringProvider stringProvider) {
+        super(view, false, stringProvider);
     }
 
-    public GridDemoDataListPresenter(ListView<ListItemViewModel> view, boolean addHeaders) {
-        super(view, addHeaders);
+    public GridDemoDataListPresenter(ListView<ListItemViewModel> view,
+                                     boolean addHeaders,
+                                     StringProvider stringProvider) {
+        super(view, addHeaders, stringProvider);
     }
 
     @Override

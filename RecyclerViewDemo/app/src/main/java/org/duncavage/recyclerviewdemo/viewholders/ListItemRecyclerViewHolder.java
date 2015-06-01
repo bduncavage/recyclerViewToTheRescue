@@ -11,6 +11,7 @@ import org.duncavage.recyclerviewdemo.R;
 import org.duncavage.recyclerviewdemo.adapters.ListItemViewHolderAdapter;
 import org.duncavage.recyclerviewdemo.presenters.DemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.GridDemoDataListPresenter;
+import org.duncavage.recyclerviewdemo.presenters.StringProvider;
 import org.duncavage.recyclerviewdemo.presenters.views.ListView;
 import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
 
@@ -21,16 +22,20 @@ import java.util.List;
  */
 public class ListItemRecyclerViewHolder extends ListItemViewHolder
         implements ListView<ListItemViewModel> {
+
     private final RecyclerView recyclerView;
     private final ImageLoader imageLoader;
+    private final StringProvider stringProvider;
+
     private DemoDataListPresenter presenter;
     private ListView.Events eventsListener;
 
-    public ListItemRecyclerViewHolder(View itemView, ImageLoader imageLoader) {
+    public ListItemRecyclerViewHolder(View itemView, ImageLoader imageLoader, StringProvider stringProvider) {
         super(itemView);
         recyclerView = (RecyclerView)itemView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         this.imageLoader = imageLoader;
+        this.stringProvider = stringProvider;
     }
 
     public void load() {
@@ -59,9 +64,9 @@ public class ListItemRecyclerViewHolder extends ListItemViewHolder
         }
     }
 
-    private static class Presenter extends GridDemoDataListPresenter {
+    private class Presenter extends GridDemoDataListPresenter {
         public Presenter(ListView<ListItemViewModel> view) {
-            super(view);
+            super(view, stringProvider);
         }
 
         @Override

@@ -16,12 +16,15 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
     private static final int DUMMY_MODEL_COUNT = 100;
 
     private final boolean isAddingHeaders;
+    private final StringProvider stringProvider;
 
     public DemoDataListPresenter(ListView<ListItemViewModel> view,
-                                 boolean addHeaders) {
+                                 boolean addHeaders,
+                                 StringProvider stringProvider) {
         super(view);
         isAddingHeaders = addHeaders;
         view.setEventsListener(this);
+        this.stringProvider = stringProvider;
     }
 
     /**
@@ -43,12 +46,12 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
         for (int i = 0; i < DUMMY_MODEL_COUNT; i++) {
             ListItemViewModel vm = new ListItemViewModel();
             if (i % 10 == 0 && isAddingHeaders) {
-                vm.primary = "Heading " + i;
+                vm.primary = stringProvider.getStringForResource(R.string.item_primary_prefix) + " " + i;
                 vm.layout = R.layout.list_group_heading;
             } else {
-                vm.primary = "Primary " + i;
-                vm.secondary = "Secondary " + i;
-                vm.tertiary = "Tertiary " + i;
+                vm.primary = stringProvider.getStringForResource(R.string.item_primary_prefix) + " " + i;
+                vm.secondary = stringProvider.getStringForResource(R.string.item_secondary_prefix) + " " + i;
+                vm.tertiary = i + " " + stringProvider.getStringForResource(R.string.item_tertiary_prefix);
                 vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + (i + 100000) + "-0";
             }
             viewModels.add(vm);
@@ -63,6 +66,8 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
 
     protected ListItemViewModel createBlankItem() {
         ListItemViewModel vm = new ListItemViewModel();
+        vm.primary = stringProvider.getStringForResource(R.string.new_item_primary);
+        vm.secondary = stringProvider.getStringForResource(R.string.new_item_secondary);
         int randAlbum = Math.abs(new Random().nextInt() % 20000000) + 10000000;
         vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + randAlbum + "-1";
 

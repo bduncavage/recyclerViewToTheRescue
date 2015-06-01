@@ -21,6 +21,7 @@ import org.duncavage.recyclerviewdemo.presenters.GridDemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.GridWithCarouselsDemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.GridWithHeadingsAndSpansDemoDataListPresenter;
 import org.duncavage.recyclerviewdemo.presenters.GridWithHeadingsDemoDataListPresenter;
+import org.duncavage.recyclerviewdemo.presenters.StringProvider;
 import org.duncavage.recyclerviewdemo.presenters.views.ListView;
 import org.duncavage.recyclerviewdemo.viewmodels.ListItemViewModel;
 import org.duncavage.recyclerviewdemo.views.RecyclerViewItemClickListener;
@@ -108,17 +109,18 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
     }
 
     private DemoDataListPresenter createListPresenter() {
+        StringProvider stringProvider = DemoApplication.getInstance().getStringProvider();
         switch (layoutType) {
             case Linear:
-                return new DemoDataListPresenter(this, true);
+                return new DemoDataListPresenter(this, true, stringProvider);
             case Grid:
-                return new GridDemoDataListPresenter(this);
+                return new GridDemoDataListPresenter(this, stringProvider);
             case GridWithGroupHeadings:
-                return new GridWithHeadingsDemoDataListPresenter(this, gridSpanCount);
+                return new GridWithHeadingsDemoDataListPresenter(this, gridSpanCount, stringProvider);
             case GridWithHeadingsAndSpans:
-                return new GridWithHeadingsAndSpansDemoDataListPresenter(this, gridSpanCount);
+                return new GridWithHeadingsAndSpansDemoDataListPresenter(this, gridSpanCount, stringProvider);
             case GridWithCarousel:
-                return new GridWithCarouselsDemoDataListPresenter(this, gridSpanCount);
+                return new GridWithCarouselsDemoDataListPresenter(this, gridSpanCount, stringProvider);
         }
         return null;
     }
@@ -146,7 +148,8 @@ public class RecyclerViewFragment extends Fragment implements ListView<ListItemV
     public void setList(List<ListItemViewModel> list) {
         ListItemViewHolderAdapter adapter;
         if (layoutType == LayoutType.GridWithCarousel) {
-            adapter = new ListItemRecyclerViewHolderAdapter(list, imageLoader);
+            adapter = new ListItemRecyclerViewHolderAdapter(list, imageLoader,
+                    DemoApplication.getInstance().getStringProvider());
         } else {
             adapter = new ListItemViewHolderAdapter<>(list, imageLoader);
         }

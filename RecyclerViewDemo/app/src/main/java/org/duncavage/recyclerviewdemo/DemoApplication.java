@@ -8,6 +8,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+import org.duncavage.recyclerviewdemo.presenters.ContextStringProvider;
+import org.duncavage.recyclerviewdemo.presenters.StringProvider;
+
 /**
  * Created by brett on 5/22/15.
  */
@@ -17,6 +20,7 @@ public class DemoApplication extends Application {
 
     private ImageLoader imageLoader;
     private RequestQueue requestQueue;
+    private StringProvider stringProvider;
 
     @Override
     public void onCreate() {
@@ -40,6 +44,13 @@ public class DemoApplication extends Application {
             imageLoader = new ImageLoader(getRequestQueue(), imageCache);
         }
         return imageLoader;
+    }
+
+    public StringProvider getStringProvider() {
+        if (stringProvider == null) {
+            stringProvider = new ContextStringProvider(this);
+        }
+        return stringProvider;
     }
 
     private final ImageLoader.ImageCache imageCache = new ImageLoader.ImageCache() {
