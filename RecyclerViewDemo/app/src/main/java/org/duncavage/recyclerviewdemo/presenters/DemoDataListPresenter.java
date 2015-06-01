@@ -64,7 +64,7 @@ public class DemoDataListPresenter extends ListPresenter<ListItemViewModel>
     protected ListItemViewModel createBlankItem() {
         ListItemViewModel vm = new ListItemViewModel();
         int randAlbum = Math.abs(new Random().nextInt() % 20000000) + 10000000;
-        vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + randAlbum + "-0";
+        vm.imageUrl = "http://rdiodynimages0-a.akamaihd.net/?l=a" + randAlbum + "-1";
 
         return vm;
     }

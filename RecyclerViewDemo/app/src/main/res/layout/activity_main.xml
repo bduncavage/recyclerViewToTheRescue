@@ -17,11 +17,12 @@
 
         <ImageButton
             android:id="@+id/button_right"
+            android:background="?android:attr/selectableItemBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:tint="@android:color/black"
-            android:src="@android:drawable/ic_menu_add"/>
+            android:layout_marginRight="@dimen/toolbar_button_margin_right"
+            android:src="@android:drawable/ic_input_add"/>
 
     </android.support.v7.widget.Toolbar>
 
