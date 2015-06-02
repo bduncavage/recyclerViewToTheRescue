@@ -1,6 +1,9 @@
 # Built application files
 /*/build/
 
+# Presentation files
+presentation/
+
 # Local configuration file (sdk path, etc)
 local.properties
 
